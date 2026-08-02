@@ -83,7 +83,7 @@ Custom overrides (navigation spacing, collaboration band styling) live in a `<st
 
 I publish research, science writing, and open-science resources independently. If something here helped you — a method, an article, a dataset walk-through — you can support the next piece of work.
 
-☕📚 **[Buy me a book](https://buymeacoffee.com/keerthanaag)**
+📚 **[Buy me a book](https://buymeacoffee.com/keerthanaag)**
 
 Contributions go toward:
 
