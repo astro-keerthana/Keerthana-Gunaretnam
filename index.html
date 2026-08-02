@@ -100,6 +100,64 @@
         margin: .35rem .35rem 0;
         box-shadow: none;
       }
+      /* Blog / Wordsmith meta line: a tinted bar in the template accent,
+         with text and icons at full contrast instead of dim yellow on black */
+      .blog-entry .text .meta{
+        background: rgba(249,109,0,.10);
+        border-left: 3px solid #F96D00;
+        border-radius: 4px;
+        padding: 8px 12px;
+      }
+      .blog-entry .text .meta p{
+        margin-bottom: 0;
+        line-height: 1.6;
+      }
+      .blog-entry .text .meta p > span,
+      .blog-entry .text .meta a{
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .4px;
+      }
+      .blog-entry .text .meta p > span{
+        color: #efefef !important;
+      }
+      .blog-entry .text .meta a{
+        color: #F96D00 !important;
+      }
+      .blog-entry .text .meta a:hover{
+        color: #fff !important;
+        text-decoration: none;
+      }
+      .blog-entry .text .meta .icon-chat{
+        color: #F96D00;
+        font-size: 15px;
+        vertical-align: middle;
+        margin-right: 3px;
+      }
+
+      /* Counter band: make the four stat boxes readable against the dark page */
+      #section-counter .block-18{
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: 6px;
+        padding: 1.6em 1.2em;
+        margin: .5em 0;
+        text-align: center;
+        min-width: 190px;
+      }
+      #section-counter .block-18 .number{
+        color: #F96D00 !important;
+        font-size: 40px;
+        font-weight: 700;
+        display: block;
+        line-height: 1.1;
+      }
+      #section-counter .block-18 span{
+        color: #efefef !important;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
     </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -118,7 +176,6 @@
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
 	          <li class="nav-item"><a href="#services-section" class="nav-link"><span>Expertise</span></a></li>
-	          <li class="nav-item"><a href="#-section" class="nav-link"><span></span></a></li>
 	          <li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
 	          <li class="nav-item"><a href="#publications-section" class="nav-link"><span>Publications</span></a></li>
 	          <li class="nav-item"><a href="#awards-section" class="nav-link"><span>Awards</span></a></li>
@@ -159,7 +216,7 @@
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm an <span>INterdisciplinary Researcher</span> from Sri Lanka</h1>
+			            <h1 class="mb-4 mt-3">I'm an <span>Interdisciplinary Researcher</span> from Sri Lanka</h1>
 			            <p><a href="#contact-section" class="btn btn-primary py-3 px-4">Hire me</a> <a href="#publications-section" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
 		            </div>
 		          </div>
