@@ -4,7 +4,7 @@ Personal research portfolio of **Keerthana (Ana) Gunaretnam**, computational bio
 
 A single-page static site covering research roles, publications, manuscripts, awards, projects, science writing, and contact details.
 
-🔗 **Live site:** https://astro-keerthana.github.io/ *(update if your Pages URL differs)*
+🔗 **Live site:** [https://astro-keerthana.github.io/](https://astro-keerthana.github.io/Keerthana-Gunaretnam/) *(update if your Pages URL differs)*
 📄 **CV:** [`keerthana-gunaretnam-cv.pdf`](keerthana-gunaretnam-cv.pdf)
 🧬 **ORCID:** [0000-0002-3979-7489](https://orcid.org/0000-0002-3979-7489)
 
