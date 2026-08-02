@@ -43,6 +43,63 @@
           font-size: 14px;
         }
       }
+
+      /* Collaboration band: dark and self-contained, so it never falls back
+         to the raw accent colour when a background image is missing */
+      .ftco-hireme{
+        background-image: none !important;
+        background-color: #17161a !important;
+        border-top: 3px solid #F96D00;
+        padding: 6em 0;
+      }
+      .ftco-hireme h2{
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: .6em;
+      }
+      .ftco-hireme h2 span{
+        color: #F96D00;
+      }
+      .ftco-hireme p{
+        color: rgba(255,255,255,.7);
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .ftco-hireme .btn-primary{
+        background: #F96D00;
+        border-color: #F96D00;
+        color: #fff;
+      }
+      .ftco-hireme .btn-primary:hover{
+        background: transparent;
+        border-color: #F96D00;
+        color: #F96D00;
+      }
+      .ftco-hireme .btn-outline-white{
+        border-color: rgba(255,255,255,.55);
+        color: #fff;
+      }
+      .ftco-hireme .btn-outline-white:hover{
+        background: #fff;
+        border-color: #fff;
+        color: #17161a;
+      }
+      /* Nothing may sit on top of the buttons: the counter band above used to
+         overlap this section and swallow the clicks */
+      #section-counter{ position: relative; z-index: 0; }
+      .ftco-hireme{ position: relative; z-index: 2; margin-top: 0 !important; }
+      .ftco-hireme .overlay,
+      .ftco-hireme::before,
+      .ftco-hireme::after{ pointer-events: none; }
+      .ftco-hireme .container{ position: relative; z-index: 3; }
+      .ftco-hireme .btn{
+        position: relative;
+        z-index: 4;
+        pointer-events: auto;
+        margin: .35rem .35rem 0;
+        box-shadow: none;
+      }
     </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -84,7 +141,7 @@
 		          	<div class="text">
 		          		<span class="subheading">Hai!</span>
 			            <h1 class="mb-4 mt-3">It's Me <span>Keerthana (Ana) Gunaretnam</span></h1>
-			            <h2 class="mb-4">Interdisciplinary Researcher</h2>
+			            <h2 class="mb-4">Computational Biology &amp; Disease-Omics Researcher</h2>
 			            <p><a href="#contact-section" class="btn btn-primary py-3 px-4">Hire me</a> <a href="#projects-section" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
 		            </div>
 		          </div>
@@ -102,7 +159,7 @@
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm an <span>Interdisciplinary Researcher</span> from Sri Lanka</h1>
+			            <h1 class="mb-4 mt-3">I'm an <span>Astrobiology &amp; Space Biology Researcher</span> from Sri Lanka</h1>
 			            <p><a href="#contact-section" class="btn btn-primary py-3 px-4">Hire me</a> <a href="#publications-section" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
 		            </div>
 		          </div>
@@ -127,7 +184,7 @@
 		          <div class="col-md-12 heading-section ftco-animate">
 		          	<h1 class="big">About</h1>
 		            <h2 class="mb-4">About Me</h2>
-		            <p>I work at the meeting point of computational biology, omics data, and space biology. My research uses RNA expression profiling and in silico study design to find shared molecular signatures across inflammatory and neurodegenerative disease, and extends into astrobiology through work on lunar regolith, astromicrobes, biosignatures, and microbial adaptation in space-relevant environments. Alongside that, I research physiology and hardware interfacing for bio-intelligence systems. I thrive on challenge and ambitious goals, and my strength is combining analytical work with the communication needed to carry it across disciplines.</p>
+		            <p>I work at the meeting point of computational biology, disease omics, and space biology. My research uses RNA expression profiling and in silico study design to find shared molecular signatures across inflammatory and neurodegenerative disease, and extends into astrobiology through work on lunar regolith, astromicrobes, biosignatures, and microbial adaptation in space-relevant environments. Alongside that, I research physiology and hardware interfacing for bio-intelligence systems. I thrive on challenge and ambitious goals, and my strength is combining analytical work with the communication needed to carry it across disciplines.</p>
 		            <ul class="about-info mt-4 px-md-0 px-2">
 		            	<li class="d-flex"><span>Name:</span> <span>Keerthana Gunaretnam</span></li>
 		            	<li class="d-flex"><span>Date of birth:</span> <span>December 13, 1999</span></li>
@@ -139,7 +196,7 @@
 		            	<li class="d-flex"><span>GitHub: </span> <span><a href="https://github.com/Astro-Keerthana" target="_blank">Keerthana_Gunaretnam_GitHub</a></span></li>
 						<li class="d-flex"><span>Medium: </span>  <span><a href="https://medium.com/@astro-keerthana" target="_blank">Keerthana_Gunaretnam_Medium</a></span></li>
 						<li class="d-flex"><span>Wattpad: </span>  <span><a href="https://www.wattpad.com/user/astro_keerthana" target="_blank">Keerthana_Gunaretnam_Wattpad</a></span></li>
-						<li class="d-flex"><span>Support: </span>  <span><a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener">Buy me a coffee</a></span></li>
+						<li class="d-flex"><span>Support: </span>  <span><a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener">Buy me a book</a></span></li>
 		            </ul>
 		          </div>
 		        </div>
@@ -1327,13 +1384,13 @@
       </div>
     </section>
 
-    <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.png)">
+    <section class="ftco-section ftco-hireme" id="collaborate-section">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-7 ftco-animate text-center">
 						<h2>I'm <span>Available</span> for research collaboration</h2>
-						<p>Glad to join new research! If my work or writing helped you, you can support it over a coffee.</p>
-						<p class="mb-0"><a href="#contact-section" class="btn btn-primary py-3 px-5">Hire me</a> <a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener" class="btn btn-white btn-outline-white py-3 px-5">Buy me a coffee</a></p>
+						<p>Glad to join new research! If my work or writing helped you, you can support it by buying me a book.</p>
+						<p class="mb-0"><a href="#contact-section" class="btn btn-primary py-3 px-5">Hire me</a> <a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener" class="btn btn-white btn-outline-white py-3 px-5">Buy me a book</a></p>
 					</div>
 				</div>
 			</div>
@@ -1467,7 +1524,7 @@
 	                <li><a href="tel:+94772666448"><span class="icon icon-phone"></span><span class="text">+94 77 2666 448</span></a></li>
 	                <li><a href="mailto:keerthana@aracreate.group"><span class="icon icon-envelope"></span><span class="text">keerthana@aracreate.group</span></a></li>
 	                <li><a href="https://github.com/Astro-Keerthana"><span class="icon icon-github"></span><span class="text">GitHub</span></a></li>
-	                <li><a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener"><span class="icon icon-coffee"></span><span class="text">Buy me a coffee</span></a></li>
+	                <li><a href="https://buymeacoffee.com/keerthanaag" target="_blank" rel="noopener"><span class="icon icon-book"></span><span class="text">Buy me a book</span></a></li>
 	              </ul>
 	            </div>
             </div>
