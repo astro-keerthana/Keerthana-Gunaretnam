@@ -1,7 +1,7 @@
 [
   {
     "title": "What We Called Disease",
-    "subtitle": "A novel",
+    "subtitle": "A novella",
     "published": "2026-09-13",
     "amazon": "https://www.amazon.com/dp/B0HH7QYY3Q",
     "description": "Debut novel, a work of science fiction."
@@ -16,11 +16,13 @@
   {
     "title": "Folklore",
     "published": "2022-01",
-    "amazon": "https://www.amazon.com/dp/B0BRG7SM6F"
+    "amazon": "https://www.amazon.com/dp/B0BRG7SM6F",
+    "description": "A poet’s perspective on their first crush."
   },
   {
     "title": "Astrobiology Hero: Hubble Space Telescope",
     "published": "2021-01",
     "amazon": "https://www.amazon.com/dp/B09MKXL2SX"
+    "description": "Life story of Hubble Space Telescope"
   }
 ]
