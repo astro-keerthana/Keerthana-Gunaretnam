@@ -1,18 +1,23 @@
 [
   {
+    "title": "What We Called Disease",
+    "subtitle": "A novel",
+    "amazon": "https://www.amazon.com/dp/B0HH7QYY3Q",
+    "description": "My first novel, a work of science fiction."
+  },
+  {
     "title": "Starlight",
     "subtitle": "Poetic tales",
     "published": "2024-01",
-    "amazon": "https://www.amazon.com/stores/author/B09MMCZ237",
+    "amazon": "https://www.amazon.com/dp/B0CSWD6Z9K",
     "description": "A collection of poetic tales about love, friendship and the feelings left unspoken between two people."
   },
   {
-    "title": "What We Called Disease",
-    "subtitle": "A novel",
-    "published": "2026",
-    "cover": "",
-    "amazon": "",
-    "comingSoon": true,
-    "description": "My first novel, a work of science fiction."
+    "title": "Folklore",
+    "amazon": "https://www.amazon.com/dp/B0BRG7SM6F"
+  },
+  {
+    "title": "Astrobiology Hero: Hubble Space Telescope",
+    "amazon": "https://www.amazon.com/dp/B09MKXL2SX"
   }
 ]
