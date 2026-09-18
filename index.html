@@ -1348,7 +1348,7 @@
           }).slice(0, SITE.mediumMaxPosts);
           if (!posts.length) throw new Error('empty');
           mediumGrid.innerHTML = posts.map(articleCard).join('');
-          mediumStatus.textContent = 'Updated automatically from Medium.';
+         
         })
         .catch(function(){
           mediumStatus.textContent = 'Showing featured articles. See Medium for the newest.';
