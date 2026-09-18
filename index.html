@@ -1358,26 +1358,67 @@
     /* ---------- Books: books.json + Google Books ---------- */
     var booksGrid   = document.getElementById('books-feed');
 
+    /* Find the book's Amazon ID (ASIN) from its Amazon link */
+    function asinOf(b){
+      if (b.asin) return String(b.asin).toUpperCase();
+      var m = String(b.amazon || '').match(/\/(?:dp|gp\/product|product|d)\/([A-Z0-9]{10})/i);
+      return m ? m[1].toUpperCase() : '';
+    }
+
+    /* Cover images to try, best first. The first one that loads is used. */
+    function coverCandidates(b){
+      var list = [], asin = asinOf(b);
+      var isbn = String(b.isbn || '').replace(/[^0-9X]/gi, '');
+      if (!isbn && /^[0-9]{9}[0-9X]$/.test(asin)) isbn = asin;   // paperback ASIN is its ISBN-10
+      if (b.cover) list.push(b.cover);                          // your own image, if you set one
+      if (asin){
+        list.push('https://images-na.ssl-images-amazon.com/images/P/' + asin + '.01.L.jpg');
+        list.push('https://m.media-amazon.com/images/P/' + asin + '.01._SCLZZZZZZZ_.jpg');
+      }
+      if (isbn) list.push('https://covers.openlibrary.org/b/isbn/' + isbn + '-L.jpg?default=false');
+      return list.map(safeUrl).filter(Boolean);
+    }
+
+    /* Try each candidate; Amazon returns a 1x1 pixel when it has no cover, so skip tiny images */
+    function resolveCover(el){
+      var list;
+      try { list = JSON.parse(el.getAttribute('data-covers') || '[]'); } catch(e){ list = []; }
+      (function next(i){
+        if (i >= list.length) return;                           // keep the title card
+        var img = new Image();
+        img.onload = function(){
+          if (img.naturalWidth > 40){
+            el.style.backgroundImage = "url('" + list[i] + "')";
+            el.classList.remove('no-cover');
+            el.textContent = '';
+          } else { next(i + 1); }
+        };
+        img.onerror = function(){ next(i + 1); };
+        img.src = list[i];
+      })(0);
+    }
+
     function bookCard(b){
-      var cover = safeUrl(b.cover);
       var link  = safeUrl(b.amazon) || safeUrl(b.link);
+      var title = b.title || '';
       var year  = b.published ? String(b.published).slice(0, 4) : '';
       var badge = b.amazon ? '<span class="book-badge">On Amazon</span>'
                 : (b.comingSoon ? '<span class="book-badge soon">Coming soon</span>' : '');
-      var coverHtml = cover
-        ? '<a ' + (link ? 'href="' + link + '" target="_blank" rel="noopener"' : '') + ' class="block-20 book-cover" style="background-image:url(\'' + cover + '\');" aria-label="' + esc(b.title) + ' cover"></a>'
-        : '<div class="block-20 book-cover no-cover">' + esc(b.title) + '</div>';
+      var label = title || 'Book on Amazon';
+      var coverHtml = '<a ' + (link ? 'href="' + link + '" target="_blank" rel="noopener"' : '') +
+        ' class="block-20 book-cover no-cover" data-covers="' + esc(JSON.stringify(coverCandidates(b))) + '"' +
+        ' aria-label="' + esc(label) + ' cover">' + esc(title) + '</a>';
       var titleHtml = link
-        ? '<a href="' + link + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
-        : esc(b.title);
+        ? '<a href="' + link + '" target="_blank" rel="noopener">' + esc(title) + '</a>'
+        : esc(title);
 
       return '<div class="col-md-4 d-flex">' +
         '<div class="blog-entry justify-content-end">' + coverHtml +
           '<div class="text mt-3 float-right d-block">' +
-            '<div class="d-flex align-items-center mb-3 meta"><p class="mb-0">' +
+            ((year || badge) ? '<div class="d-flex align-items-center mb-3 meta"><p class="mb-0">' +
               (year ? '<span class="mr-2">' + esc(year) + '</span>' : '') + badge +
-            '</p></div>' +
-            '<h3 class="heading">' + titleHtml + '</h3>' +
+            '</p></div>' : '') +
+            (title ? '<h3 class="heading">' + titleHtml + '</h3>' : '') +
             (b.subtitle ? '<p class="mb-2"><em>' + esc(b.subtitle) + '</em></p>' : '') +
             (b.description ? '<p>' + esc(clip(textOf(b.description), 200)) + '</p>' : '') +
             (link ? '<p><a href="' + link + '" target="_blank" rel="noopener" class="btn btn-primary py-2 px-3">' + (b.amazon ? 'Buy on Amazon' : 'View book') + '</a></p>' : '') +
@@ -1421,9 +1462,12 @@
     if (booksGrid && window.fetch){
       Promise.all([loadOwnList(), loadGoogleBooks()]).then(function(res){
         var seen = {}, books = [];
-        res[0].concat(res[1]).forEach(function(b){
-          if (!b || !b.title) return;
-          var key = String(b.title).toLowerCase().replace(/[^a-z0-9]/g, '');
+        var own = (Array.isArray(res[0]) ? res[0] : []).map(function(b){
+          return typeof b === 'string' ? { amazon: b } : b;   // a bare Amazon link is enough
+        });
+        own.concat(res[1]).forEach(function(b){
+          if (!b || !(b.title || b.amazon)) return;
+          var key = b.title ? String(b.title).toLowerCase().replace(/[^a-z0-9]/g, '') : asinOf(b);
           if (seen[key]) return;          // books.json wins over Google Books
           seen[key] = true;
           books.push(b);
@@ -1433,6 +1477,7 @@
         booksGrid.innerHTML = books.length
           ? books.map(bookCard).join('')
           : '<p class="book-empty">New books will appear here as they are published.</p>';
+        booksGrid.querySelectorAll('[data-covers]').forEach(resolveCover);
       });
     }
 
